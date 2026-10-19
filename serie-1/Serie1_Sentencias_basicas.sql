@@ -116,4 +116,3 @@ FROM persona
 SELECT SUM(importe) AS 'sumatoria', COUNT(gasto_id) AS 'cantidad', AVG(importe) AS 'promedio' FROM gasto
 
 
-
