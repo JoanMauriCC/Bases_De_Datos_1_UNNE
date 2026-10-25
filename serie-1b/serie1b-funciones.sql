@@ -54,3 +54,42 @@ WHERE apellido_nombre LIKE '%LL%' OR apellido_nombre LIKE '%RR%'
 SELECT * 
 FROM gasto
 WHERE DATEPART(WEEKDAY,fecha_pago) IN (7,1)
+
+--Ejercicio 9
+SELECT gasto_id,fecha_pago,importe,
+	DATENAME(WEEKDAY,fecha_pago) AS 'Dia de la semana'
+FROM gasto 
+WHERE MONTH(fecha_pago) BETWEEN 1 AND 3
+	AND importe > 20000
+	AND DATEPART(WEEKDAY,fecha_pago) NOT IN (7,1)
+
+--Ejercicio 10 
+SELECT * 
+FROM persona
+--WHERE YEAR(GETDATE()) - YEAR(fecha_nacimiento) = 30
+WHERE YEAR(GETDATE()) - YEAR(fecha_nacimiento) = 31 --4 rows
+
+--Ejercicio 11
+select top 5 * from persona
+
+SELECT persona_id, TRIM(LOWER (apellido_nombre)) AS 'nombre_minuscula', apellido_nombre
+FROM persona
+
+--Ejercicio 12
+SELECT top 4 *
+FROM edificio
+
+SELECT nombre, LEFT(nombre,4) AS 'prefijo' , SUBSTRING(direccion, 1 , 10) AS 'direccion_corta'
+FROM edificio
+
+--Ejercicio 13
+SELECT persona_id, apellido_nombre, telefono
+FROM persona 
+WHERE LEFT(telefono, 2) <> '37'
+
+--Ejercicio 14
+SELECT top 4 *
+FROM zona
+
+SELECT zona_id, ()
+FROM zona
