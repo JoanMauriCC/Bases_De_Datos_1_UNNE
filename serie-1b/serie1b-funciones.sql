@@ -171,6 +171,24 @@ SELECT YEAR(fecha_pago) AS 'anio_pago', SUM(IMPORTE) AS 'total_anual'
 FROM gasto
 GROUP BY YEAR(fecha_pago)
 
+--Ejercicio 28 
+SELECT YEAR(fecha_pago) AS 'anio_pago', MONTH(fecha_pago) AS 'mes_pago', SUM(importe) AS 'total_pago', AVG(importe) AS 'promedio_pago'
+FROM gasto
+GROUP BY YEAR(fecha_pago) , MONTH(fecha_pago)
 
+--Ejercicio 29
+SELECT YEAR(fecha_pago) AS 'anio_pago', SUM(importe) AS 'total_anual'
+FROM gasto
+GROUP BY YEAR(fecha_pago)
+HAVING SUM(importe) <= 15000000
 
+--Ejercicio 30 
+SELECT tipo_gasto_id, ROUND(AVG(importe),1) AS 'promedio_redondeado'
+FROM gasto
+GROUP BY tipo_gasto_id
 
+--Ejercicio 31
+SELECT YEAR(fecha_pago) AS 'anio_pago', MONTH(fecha_pago) AS 'mes_pago', ROUND(AVG(importe),2)
+FROM gasto
+WHERE importe > 5000
+GROUP BY YEAR(fecha_pago), MONTH(fecha_pago)
