@@ -153,4 +153,24 @@ SELECT periodo, tipo_gasto_id, COUNT(*) AS 'cantidad', SUM(importe) AS 'total'
 FROM gasto
 GROUP BY periodo, tipo_gasto_id
 
+--Ejercicio 25
+SELECT periodo, sum(importe) AS 'total_periodo'
+FROM gasto
+GROUP BY periodo
+HAVING SUM(importe) > 5000000
+
+--Ejercicio 26
+SELECT periodo, AVG(importe) AS 'promedio_periodo'
+FROM gasto
+WHERE importe > 4000
+GROUP BY periodo
+HAVING AVG(importe) > 25000
+
+--Ejercicio 27 
+SELECT YEAR(fecha_pago) AS 'anio_pago', SUM(IMPORTE) AS 'total_anual'
+FROM gasto
+GROUP BY YEAR(fecha_pago)
+
+
+
 
