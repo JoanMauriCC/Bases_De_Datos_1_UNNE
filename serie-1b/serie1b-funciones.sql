@@ -192,3 +192,38 @@ SELECT YEAR(fecha_pago) AS 'anio_pago', MONTH(fecha_pago) AS 'mes_pago', ROUND(A
 FROM gasto
 WHERE importe > 5000
 GROUP BY YEAR(fecha_pago), MONTH(fecha_pago)
+
+--Ejercicio 32
+SELECT periodo , COUNT(*) AS 'cantidad', SUM(importe) AS 'total', AVG(importe) AS 'promedio', MAX(importe) AS 'maximo', MIN(importe) AS 'minimo'
+FROM gasto
+GROUP BY periodo
+
+--Ejercicio 33
+SELECT tipo_gasto_id, COUNT(*) AS 'cantidad',AVG(importe) AS 'Promedio'
+FROM gasto 
+GROUP BY tipo_gasto_id
+HAVING COUNT(*) < 1600 AND AVG(importe) > 5000
+
+--Ejercicio 34
+SELECT	
+CASE 
+	WHEN importe < 5000 THEN 'bajo'
+	WHEN importe < 20000 THEN 'medio'
+	ELSE 'alto'
+END AS 'rango_importe', 
+COUNT(*) AS 'cantidad' ,AVG(importe) AS 'promedio'
+FROM gasto
+GROUP BY CASE 
+	WHEN importe < 5000 THEN 'bajo'
+	WHEN importe < 20000 THEN 'medio'
+	ELSE 'alto'
+END
+ORDER BY rango_importe ASC
+
+--Ejericio 35
+SELECT YEAR(fecha_pago) AS 'anio_pago', AVG(importe) AS 'promedio'
+FROM gasto
+WHERE importe > 4000 
+GROUP BY YEAR(fecha_pago)
+HAVING AVG(importe) <= 22000
+ORDER BY anio_pago ASC
