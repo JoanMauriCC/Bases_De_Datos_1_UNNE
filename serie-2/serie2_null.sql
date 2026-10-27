@@ -14,3 +14,14 @@ SELECT persona_id, apellido_nombre, telefono FROM persona WHERE telefono IS NULL
 SELECT persona_id, apellido_nombre,telefono
 FROM persona
 WHERE telefono IS NOT NULL
+
+--Ejercicio 4
+SELECT persona_id, ISNULL(apellido_nombre,'(Sin dato)') AS 'apellido_nombre', ISNULL(telefono,'(Sin dato)') AS 'telefono'
+FROM persona
+
+--Ejercicio 5
+SELECT * FROM provincia WHERE provincia_id = 7
+
+SELECT COALESCE(nombre , capital,'(Desconocido)') AS 'nombre'
+FROM provincia
+
