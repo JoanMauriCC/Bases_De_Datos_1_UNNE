@@ -50,5 +50,26 @@ FROM gasto
 --COUNT(*) cuenta todas las filas (8000).
 --COUNT(importe) no cuenta los NULL (7000). La diferencia son los 1000 gastos sin importe.
 
+--Ejercicio 11
+--SQL Server trata los NULL como si fueran el valor más chico de todos.
+SELECT persona_id, apellido_nombre, telefono
+FROM persona
+ORDER BY telefono ASC -->En ASC (de menor a mayor), NULL aparecen al principio.
 
+SELECT persona_id, apellido_nombre, telefono
+FROM persona
+ORDER BY telefono DESC -->En DESC (de mayor a menor), NULL aparecen al final.
+
+--Ejercicio 12
+SELECT persona_id, apellido_nombre, ISNULL(LEN(telefono),0) AS 'longitud_telefono'
+FROM persona
+
+--Ejercicio 13
+SELECT persona_id, apellido_nombre, fecha_nacimiento
+FROM persona
+WHERE fecha_nacimiento IS NULL
+
+--Ejercicio 14
+SELECT persona_id, apellido_nombre, ISNULL(DATEDIFF(YEAR,fecha_nacimiento,GETDATE()),0)
+FROM persona
 
