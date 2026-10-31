@@ -119,7 +119,16 @@ GO
   ORDER BY [Total Gastos] DESC
 
 
-  
+--Ejercicio 4 
+SELECT TOP 1 * FROM provincia
+SELECT TOP 1 * FROM edificio
+SELECT TOP 1 * FROM conserje
+
+SELECT p.nombre AS 'Provincia',	l.nombre AS 'Localidad', e.nombre AS 'Edificio'
+FROM provincia p
+LEFT JOIN edificio e ON e.provincia_id = p.provincia_id
+LEFT JOIN localidad l ON l.provincia_id = p.provincia_id
+					 AND l.localidad_id = e.localidad_id
 
 
 
